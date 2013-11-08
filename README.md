@@ -21,6 +21,24 @@ Users - As a user I will be able to:
 - post comments/reviews about a specific area
 - see other peoples’ comments/pictures
 
+![image](./planning_screenshots/userstories.JPG)
+
+### Schema
+
+![image](./planning_screenshots/schema.JPG )
+
+### WireFrames
+
+###### HOMEPAGE
+![image](./planning_screenshots/homepage.JPG)
+
+###### LOCATION PAGE
+![image](./planning_screenshots/locationpage.JPG)
+
+###### USER PAGE
+![image](./planning_screenshots/userpage.JPG)
+
+
 ### Libraries/APIs 
 
 - JQuery
