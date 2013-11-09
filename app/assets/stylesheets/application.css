@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+ .instagram {
+  text-align: center;
+ }
+
+.instagram-placeholder {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5px;
+}
