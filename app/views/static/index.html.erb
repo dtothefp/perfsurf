@@ -1,0 +1,26 @@
+<div class="instagram"></div>
+
+<script>
+$(function() {
+  $('.instagram').on('willLoadInstagram', function(event, options) {
+    console.log(options);
+  });
+  $('.instagram').on('didLoadInstagram', function(event, response) {
+    console.log(response);
+    window.responseObj = response.data;
+    $.each(responseObj, function(key, value){
+      var imgUrl = value.images.thumbnail.url;
+      $('div.instagram').append( $('<a>').attr({'href': value.link, 'target': '_blank'}).append( $('<img>').attr('src', imgUrl) ) );
+    });
+  });
+  $('.instagram').instagram({
+    clientId: 'af9178fc04b54d41b6e36f525a682b5c', 
+    accessToken: '29114238.af9178f.eb625902c4124fc3bbce8fdd196abe0b',
+    search: {
+      lat: 22.2102063,
+      lng: -159.497001,
+      distance: 2000
+    }
+  });
+});
+</script>
