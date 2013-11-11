@@ -3,4 +3,8 @@ Perfsurf::Application.routes.draw do
 
   resources :static, only: [:index, :show]
 
+  namespace :json do
+    resources :locations
+  end
+
 end
