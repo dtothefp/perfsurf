@@ -1,1 +1,8 @@
 <h1>locations index in admin</h1>
+
+<ul>
+  <% @locations.each do |location| %>
+    <li><%= location.name %></li>
+    <li><%= location.msw_id %></li>
+  <% end %>
+</ul>
