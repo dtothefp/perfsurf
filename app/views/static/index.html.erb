@@ -69,7 +69,7 @@ var request = $.ajax({
     }).done(function(data){
 
 callback(data.query.results.body.p);
-JSON.parse(data.query.results.body.p).each(createDisplayElement);
+JSON.parse(data.query.results.body.p).each(createDisplayElements);
 
 }).fail(function(jqXHR, textStatus, errorThrown){alert(errorThrown);console.log(textStatus);});
     

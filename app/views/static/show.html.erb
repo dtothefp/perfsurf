@@ -1,29 +1,59 @@
+<div id="msw-data"></div>
+
 <script>
   
-  function getSpotData(id, callback){
-    var httpRequest = new XMLHttpRequest;
+//   function getSpotData(id, callback){
+//     var httpRequest = new XMLHttpRequest;
 
-    httpRequest.addEventListener('load', function(){
-      callback(JSON.parse(this.responseText));
-    });
+//     httpRequest.addEventListener('load', function(){
+//       callback(JSON.parse(this.responseText));
+//     });
 
-    httpRequest.open('GET', 'http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=' + id);
-    httpRequest.send();
-  }
+//     httpRequest.open('GET', 'http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=' + id);
+//     httpRequest.send();
+//   }
 
 
 
-function appendImg(response){
-  var body = document.querySelector('body');
-  for (var i=0; i < response.length; i++) {
-    var img = document.createElement('img');
-    img.src = response[i].charts.swell;
-    img.id = "image-" + i;
-    body.appendChild(img);
-  }
+// function appendImg(response){
+//   var body = document.querySelector('body');
+//   for (var i=0; i < response.length; i++) {
+//     var img = document.createElement('img');
+//     img.src = response[i].charts.swell;
+//     img.id = "image-" + i;
+//     body.appendChild(img);
+//   }
+// }
+
+// window.onload = {
+//   // getSpotData("1", appendImg);
+// }
+
+function createImageElements(responseObj, attribute){
+      // console.log(responseObj);
+      var parsedResponse = JSON.parse(responseObj);
+      console.log(parsedResponse);
+      $.each(parsedResponse, function(key, singleObj){
+        var imgElement = $('<img>').attr('src', singleObj.charts[attribute]);
+        $('#msw-data').append($('<div>').addClass('ms-img-placeholder').append(imgElement));
+      });
 }
 
-window.onload = {
-  // getSpotData("1", appendImg);
+function getSpotData(id, callback, attr){
+    var site = 'http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=' + id;
+    var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from html where url="' + site + '"') + '&format=json'; 
+
+    $.ajax({
+          url: yql,
+          type: "GET",
+          dataType: "json"
+        }).done(function(data){
+          responseData = data.query.results.body.p;
+            callback(responseData, attr);
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            alert(errorThrown);
+            console.log(textStatus);
+      });
 }
+
 </script>
