@@ -20,10 +20,33 @@ class Admin::LocationsController < ApplicationController
     end
   end
 
+  def edit
+    @location = Location.find(params[:id])
+    render :edit
+  end
+
+   def update
+    @location = Location.find(params[:id])
+    if @location.update_attributes(admin_location_params)
+      redirect_to admin_locations_path
+    else
+      render :edit
+    end
+    
+  end
+
+  def destroy
+    @location = Location.find(params[:id])
+    if @location.destroy
+      redirect_to new_admin_location_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def admin_location_params
     params.require(:location).permit(:name, :latitude, :longitude, :msw_id)
   end
-
 end
