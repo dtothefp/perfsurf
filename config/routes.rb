@@ -5,7 +5,7 @@ Perfsurf::Application.routes.draw do
 
   resources :users
 
-  resources :locations
+  resources :locations, only: [:index, :show]
 
   resource :session, only: [:new, :create, :destroy]
 
