@@ -48,7 +48,7 @@ function getSpotData(id, callback, attr){
           type: "GET",
           dataType: "json"
         }).done(function(data){
-          responseData = data.query.results.body.p;
+          var responseData = data.query.results.body.p;
             callback(responseData, attr);
         }).fail(function(jqXHR, textStatus, errorThrown){
             alert(errorThrown);

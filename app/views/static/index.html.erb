@@ -25,6 +25,14 @@ locations = {
   "jeffreys-bay": [-34.0428347, 24.9260972]
 }
 
+ function createDisplayElements(singleObj, attribute){
+      console.log(singleObj);
+    //imgElement = $('<img>').attr('src', singleObj.charts.swell);
+    //return $('<div>').addClass('ms-img-placeholder').append(imgElement);
+    }
+
+
+
 /************ ON LOAD *************/
 // HAWAII
 $(function() {
@@ -50,35 +58,5 @@ $(function() {
     });
   });
 }); // end initial function
-
-
-function getSpotData(id, callback){
-    
-    var site = 'http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=' + id;
-
-  var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from html where url="' + site + '"') + '&format=json'; 
-function createDisplayElements(singleObj, attribute){
-    console.log(singleObj);
-    //imgElement = $('<img>').attr('src', singleObj.charts.swell);
-    //return $('<div>').addClass('ms-img-placeholder').append(imgElement);
-  }
-var request = $.ajax({
-      url: yql,
-      type: "GET",
-      dataType: "json"
-    }).done(function(data){
-
-callback(data.query.results.body.p);
-JSON.parse(data.query.results.body.p).each(createDisplayElements);
-
-}).fail(function(jqXHR, textStatus, errorThrown){alert(errorThrown);console.log(textStatus);});
-    
-
-  
-}
-
-window.onload = function(){
-  getSpotData(1, createPhoto)
-}
 
 </script>
