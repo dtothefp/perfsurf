@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticated!, :set_user, :authorized!, except: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -14,15 +16,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+
   end
 
   def edit
-    @user = User.find(params[:id])
+
   end
 
   def update
-    @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
       redirect_to user_path(@user)
@@ -33,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
 
     if @user.destroy
       redirect_to new_user_path
@@ -46,5 +46,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def authorized!
+    unless @user.id == session[:user_id]
+      redirect_to user_path(session[:user_id])
+    end
   end
 end
