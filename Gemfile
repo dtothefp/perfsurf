@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'instagramjs-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'pry-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
