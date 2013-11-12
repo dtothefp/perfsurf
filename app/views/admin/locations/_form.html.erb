@@ -1,0 +1,23 @@
+<h1>Add a Location</h1>
+
+<% unless @location.errors.none? %>
+  <% @location.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_for [:admin, @location] do |f| %>
+  <%= f.label :location_name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :latitude %>
+  <%= f.number_field :latitude, :step => "any" %>
+
+  <%= f.label :longitude %>
+  <%= f.number_field :longitude, :step => "any"%>
+
+  <%= f.label :magic_seaweed_id %>
+  <%= f.number_field :msw_id %>
+
+  <%= f.submit %>
+<% end %>
