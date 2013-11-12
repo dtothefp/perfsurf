@@ -14,4 +14,12 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def admin?
+    if !logged_in?
+      redirect_to new_user_path
+    elsif !current_user.admin
+      redirect_to user_path(current_user)
+    end
+  end
+
 end

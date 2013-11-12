@@ -1,0 +1,9 @@
+<h1>users index in admin</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+</ul>
+
+<%= link_to "locations index", admin_locations_path %>
