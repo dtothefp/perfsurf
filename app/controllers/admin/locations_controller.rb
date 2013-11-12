@@ -20,6 +20,16 @@ class Admin::LocationsController < ApplicationController
     end
   end
 
+  def destroy
+    @location = Location.find(params[:id])
+    if @location.destroy
+      redirect_to new_admin_location_path
+    # else
+    #   render :edit
+    # end
+  end
+  end
+
   private
 
   def admin_location_params

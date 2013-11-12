@@ -1,8 +1,9 @@
-<h1>locations index in admin</h1>
+<h1>PerfSurf Destinations</h1>
 
 <ul>
   <% @locations.each do |location| %>
     <li><%= location.name %></li>
     <li><%= location.msw_id %></li>
+    <%= link_to "Delete Location", admin_location_path(location), :method => :delete %>
   <% end %>
 </ul>
