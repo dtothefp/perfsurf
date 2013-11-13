@@ -11,7 +11,11 @@
     <ul>
       <% if logged_in? %>
         <li><%= link_to "Logout", session_path, :method => :delete %></li>
+        <li><%= link_to "myAcct", current_user %></li>
+        <% else %>
+        <li><%= link_to "Login", new_session_path %></li>
       <% end %>
+
     </ul>
   </nav>
 
