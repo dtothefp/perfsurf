@@ -38,3 +38,7 @@
 .msw-data {
   text-align: center;
 }
+
+.day-month, .time {
+  border: 1px solid black;
+}
