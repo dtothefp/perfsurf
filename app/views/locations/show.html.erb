@@ -1,22 +1,29 @@
-<div id="wrapper">
+
+
+<!-- <div id="wrapper">
   <h1 id="name"><%= @location.name %></h1>
   <h3 id="latitude"><%= @location.latitude %></h3>
   <h3 id="longitude"><%= @location.longitude %></h3>
-</div>
-<!-- create vars for lats and longs and then plug those in 
-var latit = @location.latitude
-var longo = @location.longitude -->
+</div> -->
 
+<div id="location" data-location-id="<%= @location.id %>" >
 
-<div id="wave-info">
-  
 </div>
 
 <script>
+$(window).load(function(){
 
+  var locationId = $("#location").data("location-id");
+  // Use AJAX to get the rest of the info from the database
 
-window.onload = function(){
-  getPerfSurfLocation($('#location').data('lid'), loadInstagramPics);
-}
+  getPerfSurfLocation(locationId, loadLocation);
+
+  
+
+});
 
 </script>
+
+
+
+
