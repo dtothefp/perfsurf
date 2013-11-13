@@ -1,9 +1,14 @@
-<h1>users index in admin</h1>
+<%= link_to "All Locations", admin_locations_path %>
+<h1>PerfSurf Users</h1>
 
 <ul>
   <% @users.each do |user| %>
-    <li><%= user.email %></li>
+    <% if user.admin == true %>
+      <li><%= user.email %>: Administrator</li>
+    <% else %>
+      <li><%= user.email %></li>
+      <%= link_to "Delete User", admin_user_path(user), :method => :delete %>
+    <% end %>
   <% end %>
 </ul>
 
-<%= link_to "locations index", admin_locations_path %>
