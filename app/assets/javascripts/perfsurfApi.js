@@ -9,6 +9,6 @@ $.ajax({
         callback(data);
       }).fail(function(jqXHR, textStatus, errorThrown){
         alert(errorThrown);
-        console.log(textStatus);
+        // console.log(textStatus);
   });
 } 

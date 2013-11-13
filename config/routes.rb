@@ -3,7 +3,7 @@ Perfsurf::Application.routes.draw do
 
   resources :static, only: [:index, :show]
 
-  resources :users
+  resources :users 
 
   resources :locations, only: [:index, :show]
 
