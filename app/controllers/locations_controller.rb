@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
 end

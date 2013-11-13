@@ -1,25 +1,21 @@
+<div id="location" data-location-id="<%= @location.id %>" ></div>
 
-
-<!-- <div id="wrapper">
-  <h1 id="name"><%= @location.name %></h1>
-  <h3 id="latitude"><%= @location.latitude %></h3>
-  <h3 id="longitude"><%= @location.longitude %></h3>
-</div> -->
-
-<div id="location" data-location-id="<%= @location.id %>" >
-
-</div>
+<% if @user.locations.include?(@location) %>
+<%= "One of your faves already!" %>
+<% else %>
+<form id="favorite-form">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <input id="userId" type="hidden" name="user_id" value="<%= session[:user_id] %>" />
+  <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" />
+  <button>Favorite</button>
+</form>
+<% end %>
 
 <script>
 $(window).load(function(){
-
   var locationId = $("#location").data("location-id");
   // Use AJAX to get the rest of the info from the database
-
   getPerfSurfLocation(locationId, loadLocation);
-
-  
-
 });
 
 </script>

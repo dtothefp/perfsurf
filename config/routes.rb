@@ -22,7 +22,6 @@ Perfsurf::Application.routes.draw do
     resources :locations
   end
 
-
-  
+  resources :favorites, only: [:create]
 
 end
