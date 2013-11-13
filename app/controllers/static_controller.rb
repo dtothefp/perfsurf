@@ -5,10 +5,12 @@ class StaticController < ApplicationController
   end
 
   def show
-   @location = Location.find(params[:id])
-    @responses = Response.new(HTTParty.get("http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=" + (@location.msw_id).to_s))
+    @responses = Response.new( HTTParty.get("http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=1") )
+    @stats = @responses.timestamp_to_object
+   # @location = Location.find(params[:id])
+    # @responses = Response.new(HTTParty.get("http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=" + (@location.msw_id).to_s))
    
-    # binding.pry
+    
     # @times = @responses.map do |response|
     #   timestamp_to_array(response)
     # end
@@ -21,9 +23,18 @@ class StaticController < ApplicationController
     #   el.gsub(/(\d+)(AM|PM)/, '\2\1' )
     # end
 
-    # #binding.pry
+    # private 
 
-    # render :show
+    # def timestamp_to_array(response)
+    #   stamp = Time.at(response["timestamp"])
+    #   time = {};
+    #   time[:full_time] = stamp.strftime("%A, %b %e %l%p")
+    #   time[:date] = stamp.strftime("%A, %b %e")
+    #   time[:hour] = stamp.strftime("%l%p")
+    #   return time
+    # end
+
+   
   end
 
 end
