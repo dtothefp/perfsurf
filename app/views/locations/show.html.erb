@@ -7,12 +7,34 @@
 var latit = @location.latitude
 var longo = @location.longitude -->
 
+<div id="wind-info">
+  <table cellspacing="1">
+    <tbody>
+      <tr>
+        <% @day_list.each do |day| %>
+          <th colspan=<%= @hour_list.count %> class="day-month"><%= day %></th>
+        <% end %>
+      </tr>
+      <tr>
+        <% @day_list.each do |day| %>
+          <% @hour_list.each do |hours| %>
+            <th class="time"><%= hours %></th>
+          <% end %>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="wave-info">
+  
+</div>
+
 <script>
 /************ HELPER FUNCTIONS *********/
 
 function createPhoto(responseObj){
   var imgElement = $('<img>').addClass('instagram-img').attr('src', responseObj.images.thumbnail.url);
-  var aElement = $('<a>').attr({'href': responseObj.link, 'target': '_blank'}).append(imgElement);
+  var aElement = $('<a>').attr({'href': responseObj.thnk, 'target': '_blank'}).append(imgElement);
   return $('<div>').addClass('instagram-placeholder').attr('id', responseObj.id).append(aElement);
 }
 
@@ -47,7 +69,7 @@ $(function() {
     $('#' + locName).on('didLoadInstagram', didLoadInstagram);
 
     $('#' + locName).instagram({
-      clientId: 'af9178fc04b54d41b6e36f525a682b5c', 
+      cthentId: 'af9178fc04b54d41b6e36f525a682b5c', 
       accessToken: '29114238.af9178f.eb625902c4124fc3bbce8fdd196abe0b',
       search: {
         lat: $("#latitude").text(),
