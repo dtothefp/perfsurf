@@ -1,32 +1,16 @@
-<div id="msw-data"></div>
+<% @stats.each do |key, value| %>
+  <li><%= key %></li>
+  <% @stats[key].each do |times_arr| %>
+      <% times_arr.each do |key, time| %>
+        <li><%= key %></li>
+        <li>Swell Object <%= time[:swell] %></li>
+        <li>Swell Components <%= time[:swell]["components"]%></li>
+        <li>Wave Height: <%= time[:swell]["components"]["primary"]["height"] %></li>
+        <li>Wind Object<%= time[:wind] %></li>
+        <li>Wind Strength: <%= time[:wind]["speed"] %></li>
+        <li>Wind Direction: <%= time[:wind]["direction"] %></li>
+        <li>Charts Object<%= time[:charts] %></li>
 
-
-<div id="wind-info">
-  <table cellspacing="1">
-    <tbody>
-      <tr>
-        <% @day_list.each do |day| %>
-          <th colspan=<%= @hour_list.count %> class="day-month"><%= day %></th>
-        <% end %>
-      </tr>
-      <tr>
-        <% @day_list.each do |day| %>
-          <% @hour_list.each do |hours| %>
-            <th class="time"><%= hours %></th>
-          <% end %>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<script>
-
-window.onload = function(){
-  getSpotData("1", createImageElements, "swell");
-  getSpotData("1", createImageElements, "pressure");
-  getSpotData("1", createImageElements, "wind");
-}
-
-
-</script>
+      <% end %>
+  <% end %>
+<% end %>
