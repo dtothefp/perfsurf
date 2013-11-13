@@ -1,5 +1,7 @@
 <div id="location" data-location-id="<%= @location.id %>" ></div>
 
+<h1>Location Magic Seaweed ID: <%= @location.msw_id %></h1>
+
 <% if @user.locations.include?(@location) %>
 <%= "One of your faves already!" %>
 <% else %>
@@ -9,6 +11,24 @@
   <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" />
   <button>Favorite</button>
 </form>
+<% end %>
+
+<% @stats.each do |key, value| %>
+<div id="<%= key %>" class="stats-placeholder">
+<ul>
+  <li class="day-stats"><%= key %></li>
+  <% @stats[key].each do |times_arr| %>
+      <% times_arr.each do |key, time| %>
+      <div class="time-related-stats">
+        <li><%= key %></li>
+        <li>Wave Height: <%= time[:swell]["components"]["primary"]["height"] %></li>
+        <li>Wind Strength: <%= time[:wind]["speed"] %></li>
+        <li>Wind Direction: <%= time[:wind]["direction"] %></li>
+      </div>
+      <% end %>
+  <% end %>
+</ul>
+</div>
 <% end %>
 
 <script>

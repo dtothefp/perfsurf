@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+* {
+  box-sizing: border-box;
+}
+
  .instagram {
   text-align: center;
  }
@@ -40,5 +44,34 @@
 }
 
 .day-month, .time {
+  border: 1px solid black;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.stats-placeholder {
+  border: 1px solid goldenrod;
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.day-stats {
+  background: grey;
+}
+
+.time-related-stats {
+  width: 12.5%;
+  float: left;
+}
+
+.time-related-stats li {
   border: 1px solid black;
 }
