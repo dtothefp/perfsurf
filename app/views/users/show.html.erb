@@ -5,3 +5,10 @@
 <div>
   <%= link_to "See All Surf Locations", locations_path %>
 </div>
+
+<h2>Favorite Locations:</h2>
+<ul>
+  <% @locations.each do |location| %>
+    <li><%= link_to location.name, location_path(location) %></li>
+  <% end %>
+</ul>
