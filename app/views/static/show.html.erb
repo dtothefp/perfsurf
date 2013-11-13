@@ -1,5 +1,25 @@
 <div id="msw-data"></div>
 
+
+<div id="wind-info">
+  <table cellspacing="1">
+    <tbody>
+      <tr>
+        <% @day_list.each do |day| %>
+          <th colspan=<%= @hour_list.count %> class="day-month"><%= day %></th>
+        <% end %>
+      </tr>
+      <tr>
+        <% @day_list.each do |day| %>
+          <% @hour_list.each do |hours| %>
+            <th class="time"><%= hours %></th>
+          <% end %>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <script>
 
 window.onload = function(){

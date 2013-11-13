@@ -18,14 +18,7 @@ function getSpotData(id, callback, attr){
   $.ajax({
         url: yql,
         type: "GET",
-        // crossDomain: true,
-        // xhrFields: {
-        //   withCredentials: true
-        // },
         dataType: "json"
-        // success: function() { alert("Success"); },
-        // error: function() { alert('Failed!'); },
-        // beforeSend: setHeader
       }).done(function(data){
         if (data.query.results === null) {
           console.log("results null");

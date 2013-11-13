@@ -47,3 +47,29 @@ function loadInstagramPics(){
     });
   });
 }
+
+/***** SINGLE LOCATION ********/
+
+function loadInstagramPics(dataObj){
+  // ???? How do you parse this
+    var parsedObj = JSON.parse(dataObj);
+    $('body').append(
+      $('<div>').attr('id', locationName).addClass('instagram').append(
+        $('<h1>').text(parsedObj.name.toUpperCase())
+      )
+    );
+    $('div#' + locationName).on('willLoadInstagram', function(event, options) {
+      console.log(options);
+    });
+    $('div#' + locationName).on('didLoadInstagram', didLoadInstagram);
+    $('div#' + locationName).instagram({
+      clientId: 'af9178fc04b54d41b6e36f525a682b5c', 
+      accessToken: '29114238.af9178f.eb625902c4124fc3bbce8fdd196abe0b',
+      search: {
+        lat: parseObj.latitude,
+        lng: parsedObj.longitude,
+        count: 6,
+        distance: 3000
+      }
+    });
+}
