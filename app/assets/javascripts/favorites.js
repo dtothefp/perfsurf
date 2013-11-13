@@ -15,9 +15,14 @@ function addFavorite() {
       url: "/favorites",
       type: "POST",
       data: {user_id: userId, location_id: locationId},
-      dataType: "json"
+      dataType: "json",
+      success: changeButton()
     })
   });
 
+function changeButton() {
+  $('button').fadeOut();
+}
 
 }
+

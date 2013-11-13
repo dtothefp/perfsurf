@@ -10,13 +10,16 @@ var longo = @location.longitude -->
 <div id="wave-info">
 
 </div>
-
+<% if @user.locations.include?(@location) %>
+<%= "One of your faves already!" %>
+<% else %>
 <form id="favorite-form">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input id="userId" type="hidden" name="user_id" value="<%= session[:user_id] %>" >
   <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" >
   <button>Favorite</button>
 </form>
+<% end %>
 
 <script>
 

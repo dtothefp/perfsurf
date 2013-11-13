@@ -2,7 +2,6 @@ class FavoritesController < ApplicationController
 
 def create
   favorite = Favorite.new(favorite_params)
-  favorite.save
 
   if favorite.save(favorite_params)
       render json: favorite
