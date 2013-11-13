@@ -21,3 +21,20 @@
   box-sizing: border-box;
   padding: 5px;
 }
+
+.ms-img-placeholder {
+  box-sizing:border-box;
+  padding: 10px;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+}
+
+.ms-img-placeholder img {
+  width: 100%;
+}
+
+.msw-data {
+  text-align: center;
+}

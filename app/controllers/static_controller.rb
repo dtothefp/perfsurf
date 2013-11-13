@@ -5,7 +5,7 @@ class StaticController < ApplicationController
   end
 
   def show
-    
+   
   end
 
 end
