@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require jquery.instagram
 //= require turbolinks
-//= require_tree .
+//= require raphael.min.js
+//= require kartograph.js
+//= require favorites.js
+//= require perfsurfApi.js
+//= require instagram.js
