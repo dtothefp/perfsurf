@@ -3,14 +3,17 @@
 </div>
 
 <% if @user.locations.include?(@location) %>
-<h2><%= "One of your faves already!" %></h2>
+  <form id="delete-favorite-form">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <input id="favoriteId" type="hidden" name="favorite_id" value="<%= Favorite.where(user_id: session[:user_id]).where(location_id: @location.id).first.id %>" />
+  <button id="button" class="btn btn-primary btn-lg">Delete Favorite</button>
 <% else %>
-<form id="favorite-form">
+  <form id="add-favorite-form">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input id="userId" type="hidden" name="user_id" value="<%= session[:user_id] %>" />
   <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" />
-  <button id="button" class="btn btn-primary btn-lg">Add to Favorites</button>
-</form>
+  <button id="button" class="btn btn-primary btn-lg">Add Favorite</button>
+  </form>
 <% end %>
 
 <% @stats.each do |key, value| %>
