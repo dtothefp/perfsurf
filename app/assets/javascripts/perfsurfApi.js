@@ -10,6 +10,6 @@ $.ajax({
       }).fail(function(jqXHR, textStatus, errorThrown){
         alert(errorThrown);
         alert("Perf Surf API failed to connect")
-        // console.log(textStatus);
+        console.log(textStatus);
   });
 } 

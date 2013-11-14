@@ -1,7 +1,5 @@
 class Json::LocationsController < ApplicationController
 
-  before_action :admin?
-
   def index
     @locations = Location.all
     
