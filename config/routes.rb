@@ -1,5 +1,5 @@
 Perfsurf::Application.routes.draw do
-  root 'static#index'
+  root 'users#new'
 
   resources :static, only: [:index, :show]
 

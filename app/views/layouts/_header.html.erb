@@ -7,10 +7,25 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">PerfSurf</a>
+    <a class="navbar-brand" href="/users/new">PerfSurf</a>
   </div>
 
+<% if admin? %>
   <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li>Welcome Admin!</li>
+        <li><%= link_to "Logout", session_path, :method => :delete %></li>
+        <li><%= link_to "myAcct", current_user %></li>
+        <% else %>
+        <li><%= link_to "Login", new_session_path %></li>
+      <% end %>
+      </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+<% else %>
+<div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li><%= link_to "Logout", session_path, :method => :delete %></li>
@@ -21,3 +36,4 @@
       </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
+<% end %>
