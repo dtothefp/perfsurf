@@ -28,7 +28,7 @@
 }
 
 .footer {
-  background: url('http://www.freshnessmag.com/wp-content/uploads/2009/07/vans-sk8-hi-deconstruct-flauge-limited-03.jpg');
+  background: url('http://thestructuredartist.files.wordpress.com/2012/11/surfboards-cover.jpg');
   background-size: 10% 104%;
   margin-top: 100px;
   height: 75px;
@@ -41,6 +41,11 @@
 body {
   background: url('http://4.bp.blogspot.com/-EUE9rKUXNkk/TZFximtyi0I/AAAAAAAAAX4/LZsnVOqnIgA/s1600/SingleFinNoseRide.jpg') no-repeat center center;
   background-size: cover;
+}
+
+a.navbar-brand {
+  font-family: 'Pacifico';
+  font-size: 25px;
 }
 
  .instagram {
@@ -93,7 +98,7 @@ li {
 }
 
 .pointless-div {
-   -webkit-box-shadow: 4px 4px 23px rgba(50, 50, 50, 0.46);
+  -webkit-box-shadow: 4px 4px 23px rgba(50, 50, 50, 0.46);
   -moz-box-shadow:    4px 4px 23px rgba(50, 50, 50, 0.46);
   box-shadow:         4px 4px 23px rgba(50, 50, 50, 0.46);
 }
