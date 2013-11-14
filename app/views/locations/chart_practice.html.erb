@@ -1,0 +1,18 @@
+<div id="master-chart-holder">
+  <% @stats.each do |key, value| %>
+  <div id="<%= key %>">
+      <h3><%= key %></h3>
+      <ul>
+      <% @stats[key].each do |times_arr| %>
+          <% times_arr.each do |time, chartObj| %>
+          <div class="chart-placeholder">
+            <li><%= time %></li>
+            <li class="chart-li"><img src="<%= chartObj[:charts]["swell"] %>" width="400"></li>
+            <li class="chart-li"><img src="<%= chartObj[:charts]["wind"] %>" width="400"></li>
+          </div>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>

@@ -9,6 +9,7 @@ $.ajax({
         callback(data);
       }).fail(function(jqXHR, textStatus, errorThrown){
         alert(errorThrown);
-        // console.log(textStatus);
+        alert("Perf Surf API failed to connect")
+        console.log(textStatus);
   });
 } 

@@ -35,26 +35,19 @@
 </div>
 <% end %>
 <br style="clear:both;">
-<div id="master-chart-holder">
-  <% @stats.each do |key, value| %>
-  <div id="<%= key %>">
-      <h3><%= key %></h3>
-      <ul>
-      <% @stats[key].each do |times_arr| %>
-          <% times_arr.each do |time, chartObj| %>
-          <div class="chart-placeholder">
-            <li><%= time %></li>
-            <li class="chart-li"><img src="<%= chartObj[:charts]["swell"] %>" width="400"></li>
-            <li class="chart-li"><img src="<%= chartObj[:charts]["wind"] %>" width="400"></li>
-          </div>
-          <% end %>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+
+<div id="charts">
+  <h3></h3>
+  <p></p>
+  <li class="chart-placeholder">Waves<img src="" alt="" id="wave-chart"></li>
+  <li class="chart-placeholder">Wind<img src="" alt="" id="wind-chart"></li>
 </div>
 
 <script>
+
+
+var chartArray = <%= raw @chart_array %>;
+
 $(window).load(function(){
   var locationId = $("#location").data("location-id");
   // Use AJAX to get the rest of the info from the database
@@ -91,6 +84,38 @@ $(window).load(function(){
    div.css({"height": (parseInt(div.parent().text())*6) +"%", zIndex: "-1"});
    div.css("background-color", "hsla(" + (100-((div.parent()).text()*6)) + ", 100%, 50%, .6)");
   });
+
+  // Display Charts
+
+  $('#charts h3').text(chartArray[0][0]);
+  $('#charts p').text(chartArray[0][1]);
+  $('#charts img#wave-chart').attr('src', chartArray[0][2]);
+  $('#charts img#wind-chart').attr('src', chartArray[0][3]);
+  
+
+  function chartCallback(counter){
+    if (counter < chartArray.length) {
+      console.log(counter);
+      console.log(chartArray[counter]);
+      console.log(chartArray[counter][0]);
+      
+      $('#charts h3').text(chartArray[counter][0]);
+      $('#charts p').text(chartArray[counter][1]);
+      $('#charts img#wave-chart').attr('src', chartArray[counter][2]);
+      $('#charts img#wind-chart').attr('src', chartArray[counter][3]);
+
+      counter++;
+      setTimeout(function(){chartCallback(counter)}, 300);
+    }
+  } 
+
+  $('#charts').click(function(){
+    chartCallback(1);
+  }); 
+
+  
+    
+
 
 });
 
