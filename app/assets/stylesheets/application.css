@@ -14,7 +14,7 @@
 
 * {
   box-sizing: border-box;
-  margin 0; 
+  margin: 0; 
 }
 
 .container {
@@ -149,9 +149,7 @@ li.wind-direction img {
   margin-left: -15px;
   width: 30px;
   height: 30px;
-  rotate: 180eg;
-  transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
+  transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
 }
 
@@ -183,11 +181,11 @@ div.surf-height-display {
   border-radius: 10px;
 }
 
-.stats-placeholder:nth-child(2n+2) {
+.stats-placeholder:nth-child(2n+1) {
   padding-right: 10px;
 }
 
-.stats-placeholder:nth-child(2n+1) {
+ .stats-placeholder:nth-child(2n+2) {
   padding-left: 10px;
 }
 
