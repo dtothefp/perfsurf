@@ -6,4 +6,23 @@
   <% end %>
 </ul>
 
-<div id="map"></div>
+<div id="map" style="height:400px; width:800px;"></div>
+
+<!-- <img src='<%= asset_path "usa-map.svg" %>' > -->
+
+<script>
+window.onload = function(){
+  console.log("loaded");
+  var map = kartograph.map('#map', 600, 400);
+  map.loadMap('<%= asset_path "world-map.svg" %>', function() {
+    map.addLayer('usa', {
+      styles: {
+         fill: '#dfdcdc',
+         stroke: '#fff'
+      }
+    });
+  });
+}
+
+
+</script>
