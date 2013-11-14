@@ -16,6 +16,7 @@ gem 'pry-rails'
 gem "nokogiri", "~> 1.6.0"
 gem "httparty", "~> 0.12.0"
 gem "bootstrap-sass", github: "thomas-mcdonald/bootstrap-sass", branch: "3"
+gem "paperclip", "~> 3.0"
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
