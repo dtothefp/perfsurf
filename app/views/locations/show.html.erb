@@ -1,6 +1,6 @@
-<div id="location" data-location-id="<%= @location.id %>" ></div>
-
-<h1>Location Magic Seaweed ID: <%= @location.msw_id %></h1>
+<div id="location-header">
+  <div id="location" data-location-id="<%= @location.id %>" ></div>
+</div>
 
 <% if @user.locations.include?(@location) %>
 <h2><%= "One of your faves already!" %></h2>
@@ -9,29 +9,50 @@
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input id="userId" type="hidden" name="user_id" value="<%= session[:user_id] %>" />
   <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" />
-  <button>Favorite</button>
+  <button id="button" class="btn btn-primary btn-lg">Add to Favorites</button>
 </form>
 <% end %>
 
 <% @stats.each do |key, value| %>
 <div id="<%= key %>" class="stats-placeholder">
-  <h3 class="day-stats"><%= key %></h3>
-  <ul class="time-related-stats-placeholder">
-  <% @stats[key].each do |times_arr| %>
-      <% times_arr.each do |key, time| %>
-      <div class="time-related-stats">
-        <li><%= key %></li>
-        <li class="stats surf-height"><%= time[:swell]["components"]["primary"]["height"] %>
-          <div class="surf-height-display"></div>
-        </li>
-        <li class="stats wind-speed"><%= time[:wind]["speed"] %></li>
-        <li class="stats wind-direction"><%= time[:wind]["direction"] %><img src="http://pythonhosted.org/sphinxjp.themes.revealjs/_images/arrow.png" alt="arrow"></%></li>
-      </div>
-      <% end %>
-  <% end %>
-</ul>
+  <div class="pointless-div">
+    <h3 class="day-stats"><%= key %></h3>
+    <ul class="time-related-stats-placeholder">
+    <% @stats[key].each do |times_arr| %>
+        <% times_arr.each do |key, time| %>
+        <div class="time-related-stats">
+          <li><%= key %></li>
+          <li class="stats surf-height"><%= time[:swell]["components"]["primary"]["height"] %>
+            <div class="surf-height-display"></div>
+          </li>
+          <li class="stats wind-speed"><%= time[:wind]["speed"] %></li>
+          <li class="stats wind-direction"><%= time[:wind]["direction"] %><img src="http://pythonhosted.org/sphinxjp.themes.revealjs/_images/arrow.png" alt="arrow"></%></li>
+        </div>
+        <% end %>
+    <% end %>
+  </ul>
+</div>
 </div>
 <% end %>
+<br style="clear:both;">
+<div id="master-chart-holder">
+  <% @stats.each do |key, value| %>
+  <div id="<%= key %>">
+      <h3><%= key %></h3>
+      <ul>
+      <% @stats[key].each do |times_arr| %>
+          <% times_arr.each do |time, chartObj| %>
+          <div class="chart-placeholder">
+            <li><%= time %></li>
+            <li class="chart-li"><img src="<%= chartObj[:charts]["swell"] %>" width="400"></li>
+            <li class="chart-li"><img src="<%= chartObj[:charts]["wind"] %>" width="400"></li>
+          </div>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
 
 <script>
 $(window).load(function(){
@@ -67,7 +88,7 @@ $(window).load(function(){
   var surfDiv = $('div.surf-height-display');
   $.each(surfDiv, function(k, el){
   var div = $(el);
-   div.css({"height": (parseInt(div.parent().text())*5) +"%", zIndex: "-1"});
+   div.css({"height": (parseInt(div.parent().text())*6) +"%", zIndex: "-1"});
    div.css("background-color", "hsla(" + (100-((div.parent()).text()*6)) + ", 100%, 50%, .6)");
   });
 

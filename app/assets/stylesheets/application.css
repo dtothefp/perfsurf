@@ -59,7 +59,7 @@ ul {
 
 li {
   list-style-type: none;
-  float: left;
+  /*float: left;*/
   margin:5px;
 }
 
@@ -70,12 +70,10 @@ li {
   margin-bottom: 30px;
 }
 
-.stats-placeholder:nth-child(2n+2) {
-  padding-right: 10px;
-}
-
-.stats-placeholder:nth-child(2n+1) {
-  padding-left: 10px;
+.pointless-div {
+   -webkit-box-shadow: 4px 4px 23px rgba(50, 50, 50, 0.46);
+  -moz-box-shadow:    4px 4px 23px rgba(50, 50, 50, 0.46);
+  box-shadow:         4px 4px 23px rgba(50, 50, 50, 0.46);
 }
 
 .day-stats {
@@ -149,4 +147,55 @@ div.surf-height-display {
   background: lavenderblush;
   border-radius: 0 0 5px 5px;
 }
+
+.instagram h1 {
+  background: rgba(256, 256, 256, 0.7);
+  display: inline-block;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.stats-placeholder:nth-child(2n+1) {
+  padding-right: 10px;
+}
+
+.stats-placeholder:nth-child(2n+2) {
+  padding-left: 10px;
+}
+
+#button {
+  margin: 20px auto 40px auto;
+  display: block;
+}
+
+#location-header {
+  text-align: center;
+}
+
+#location {
+  display: inline-block;
+}
+
+.chart-li {
+  display: inline;
+}
+
+#master-chart-holder {
+  position: relative;
+}
+
+.chart-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*.chart-placeholder {
+  float: left;
+}
+
+.chart-placeholder li {
+  display: inline;
+}*/
 
