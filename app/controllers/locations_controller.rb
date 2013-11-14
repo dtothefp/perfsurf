@@ -5,8 +5,12 @@ class LocationsController < ApplicationController
   end
 
   def index 
-    @locations = Location.all
-    render :index
+    if logged_in?
+      @locations = Location.all
+      render :index
+    else
+      redirect_to new_session_path
+    end
   end
 
   def show
