@@ -23,7 +23,7 @@
 .instagram-placeholder {
   display: inline-block;
   box-sizing: border-box;
-  padding: 5px;
+  padding: 20px;
 }
 
 .ms-img-placeholder {
@@ -59,7 +59,6 @@ li {
 }
 
 .stats-placeholder {
-  border: 1px solid goldenrod;
   width: 50%;
   float: left;
   text-align: center;
@@ -78,6 +77,11 @@ li {
   border: 1px solid black;
 }
 
+.stats-placeholder h3 {
+  margin: 0;
+  padding: 10px;
+}
+
 .stats {
   height: 40px;
   line-height: 35px;
@@ -85,4 +89,27 @@ li {
 
 .stats.title {
   line-height: 18px;
+}
+
+.stats-placeholder li {
+  margin: 0;
+  width: 100%;
+}
+
+li.wind-direction {
+  color: transparent;
+  position: relative;
+}
+
+li.wind-direction img {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  margin-left: -15px;
+  width: 30px;
+  height: 30px;
+  rotate: 180eg;
+  transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -webkit-transform: rotate(180deg);
 }

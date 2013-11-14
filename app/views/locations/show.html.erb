@@ -21,9 +21,9 @@
       <% times_arr.each do |key, time| %>
       <div class="time-related-stats">
         <li><%= key %></li>
-        <li class="stats"><%= time[:swell]["components"]["primary"]["height"] %></li>
-        <li class="stats"><%= time[:wind]["speed"] %></li>
-        <li class="stats"><%= time[:wind]["direction"] %></li>
+        <li class="stats surf-height"><%= time[:swell]["components"]["primary"]["height"] %></li>
+        <li class="stats wind-speed"><%= time[:wind]["speed"] %></li>
+        <li class="stats wind-direction"><%= time[:wind]["direction"] %><img src="http://pythonhosted.org/sphinxjp.themes.revealjs/_images/arrow.png" alt="arrow"></%></li>
       </div>
       <% end %>
   <% end %>
@@ -36,6 +36,7 @@ $(window).load(function(){
   var locationId = $("#location").data("location-id");
   // Use AJAX to get the rest of the info from the database
   getPerfSurfLocation(locationId, loadLocation);
+  // Make column in wind stats
   var div = $('<div>').addClass("time-related-stats");
   var liTime = $('<li>').text('Time');
   var liWave = $('<li>').addClass('stats title').text('Wave Height');
@@ -46,6 +47,13 @@ $(window).load(function(){
     div.append(value);
   })
   $('.time-related-stats-placeholder').prepend(div);
+
+  // Rotate Arrows for Wind Direction
+  var directions = $('li.wind-direction');
+  $.each( directions, function(i,el) {
+    $(el).find("img").css("-webkit-transform", "rotate(" + $(el).text() + "deg)");
+  });
+
 });
 
 </script>
