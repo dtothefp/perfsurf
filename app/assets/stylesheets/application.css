@@ -68,10 +68,19 @@ li {
 }
 
 .time-related-stats {
-  width: 12.5%;
+  width: 11.11111111111111%;
   float: left;
 }
 
 .time-related-stats li {
   border: 1px solid black;
+}
+
+.stats {
+  height: 40px;
+  line-height: 35px;
+}
+
+.stats.title {
+  line-height: 18px;
 }
