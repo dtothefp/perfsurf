@@ -3,7 +3,6 @@
 <ul>
   <% @locations.each do |location| %>
     <li><%= link_to location.name, location_path(location) %></li>
-    <li><%= location.msw_id %></li>
   <% end %>
 </ul>
 
