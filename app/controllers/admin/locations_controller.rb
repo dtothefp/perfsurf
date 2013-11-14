@@ -25,14 +25,13 @@ class Admin::LocationsController < ApplicationController
     render :edit
   end
 
-   def update
+  def update
     @location = Location.find(params[:id])
     if @location.update_attributes(admin_location_params)
       redirect_to admin_locations_path
     else
       render :edit
     end
-    
   end
 
   def destroy
@@ -47,6 +46,6 @@ class Admin::LocationsController < ApplicationController
   private
 
   def admin_location_params
-    params.require(:location).permit(:name, :latitude, :longitude, :msw_id)
+    params.require(:location).permit(:name, :latitude, :longitude, :msw_id, :image)
   end
 end
