@@ -21,7 +21,9 @@
       <% times_arr.each do |key, time| %>
       <div class="time-related-stats">
         <li><%= key %></li>
-        <li class="stats surf-height"><%= time[:swell]["components"]["primary"]["height"] %></li>
+        <li class="stats surf-height"><%= time[:swell]["components"]["primary"]["height"] %>
+          <div class="surf-height-display"></div>
+        </li>
         <li class="stats wind-speed"><%= time[:wind]["speed"] %></li>
         <li class="stats wind-direction"><%= time[:wind]["direction"] %><img src="http://pythonhosted.org/sphinxjp.themes.revealjs/_images/arrow.png" alt="arrow"></%></li>
       </div>
@@ -51,7 +53,22 @@ $(window).load(function(){
   // Rotate Arrows for Wind Direction
   var directions = $('li.wind-direction');
   $.each( directions, function(i,el) {
-    $(el).find("img").css("-webkit-transform", "rotate(" + $(el).text() + "deg)");
+    $(el).find("img").css("-webkit-transform", "rotate(" + ( parseInt($(el).text()) + 180 )+ "deg)");
+  });
+
+  // Color wind boxes
+  var windLi = $('.wind-speed');
+  $.each(windLi, function(k, el){
+  var li = $(el);
+   li.css("background-color", "hsla(" + (100-(li.text()*4)) + ", 100%, 50%, 1)");
+  });
+
+  // Surf Height Color Boxes
+  var surfDiv = $('div.surf-height-display');
+  $.each(surfDiv, function(k, el){
+  var div = $(el);
+   div.css({"height": (parseInt(div.parent().text())*5) +"%", zIndex: "-1"});
+   div.css("background-color", "hsla(" + (100-((div.parent()).text()*6)) + ", 100%, 50%, .6)");
   });
 
 });

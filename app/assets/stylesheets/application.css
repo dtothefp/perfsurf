@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background: url('http://4.bp.blogspot.com/-EUE9rKUXNkk/TZFximtyi0I/AAAAAAAAAX4/LZsnVOqnIgA/s1600/SingleFinNoseRide.jpg') no-repeat center center;
+  background-size: cover;
+}
+
  .instagram {
   text-align: center;
  }
@@ -62,10 +67,19 @@ li {
   width: 50%;
   float: left;
   text-align: center;
+  margin-bottom: 30px;
+}
+
+.stats-placeholder:nth-child(2n+2) {
+  padding-right: 10px;
+}
+
+.stats-placeholder:nth-child(2n+1) {
+  padding-left: 10px;
 }
 
 .day-stats {
-  background: grey;
+  background: #f8f8f8;
 }
 
 .time-related-stats {
@@ -74,12 +88,14 @@ li {
 }
 
 .time-related-stats li {
-  border: 1px solid black;
+  border: 2px solid ghostwhite;
+
 }
 
 .stats-placeholder h3 {
   margin: 0;
   padding: 10px;
+  border-radius: 10px 10px 0 0;
 }
 
 .stats {
@@ -113,3 +129,24 @@ li.wind-direction img {
   -ms-transform: rotate(30deg);
   -webkit-transform: rotate(180deg);
 }
+
+li.surf-height {
+  position: relative;
+  z-index: 9999;
+}
+
+div.surf-height-display {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 20px;
+}
+
+.time-related-stats-placeholder {
+  overflow: hidden;
+  margin: 0;
+  background: lavenderblush;
+  border-radius: 0 0 5px 5px;
+}
+
