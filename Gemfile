@@ -13,11 +13,12 @@ gem 'jbuilder', '~> 1.2'
 gem 'instagramjs-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'pry-rails'
-gem "nokogiri", "~> 1.6.0"
+gem "nokogiri", "~> 1.4.4"
 gem "httparty", "~> 0.12.0"
 gem "bootstrap-sass", github: "thomas-mcdonald/bootstrap-sass", branch: "3"
 gem 'rails_12factor', group: :production
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk', '~> 1.20.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
