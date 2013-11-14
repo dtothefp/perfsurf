@@ -7,7 +7,6 @@ $(function(){
 function addFavorite() {
     $("#add-favorite-form").on("submit", function() {
       event.preventDefault();
-      console.log("submitted")
    
       var userId = $('input#userId').val();
       var locationId = $('input#locationId').val();
@@ -26,7 +25,6 @@ function addFavorite() {
 function deleteFavorite() {
      $("#delete-favorite-form").on("submit", function() {
       event.preventDefault();
-      console.log("submitted")
    
       var favoriteId = $('input#favoriteId').val();
 
