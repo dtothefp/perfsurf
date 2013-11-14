@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-        <li><a href="">Welcome Admin!</a></li>
+        <li><%= link_to "Welcome Admin!", new_admin_location_path %></li>
         <li><%= link_to "Logout", session_path, :method => :delete %></li>
         <li><%= link_to "myAcct", current_user %></li>
         <% else %>
