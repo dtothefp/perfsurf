@@ -156,11 +156,11 @@ div.surf-height-display {
   border-radius: 10px;
 }
 
-.stats-placeholder:nth-child(2n+1) {
+.stats-placeholder:nth-child(2n+1), #wave-chart {
   padding-right: 10px;
 }
 
-.stats-placeholder:nth-child(2n+2) {
+.stats-placeholder:nth-child(2n+2), #wind-chart {
   padding-left: 10px;
 }
 
@@ -185,21 +185,19 @@ div.surf-height-display {
   position: relative;
 }
 
-/*.chart-placeholder {
-  position: absolute;
-  top: 0;
-  left: 20%;
-}*/
-
-.chart-placeholder img {
-  width: 350px;
+#charts {
+  position: relative;
+  text-align: center;
 }
 
-/*.chart-placeholder {
+.chart-placeholder {
   float: left;
+  width: 50%;
+  margin: 0;
+  padding: 0;
 }
 
-.chart-placeholder li {
-  display: inline;
-}*/
+#wave-chart, #wind-chart {
+ width: 100%;
+}
 
