@@ -15,11 +15,10 @@
         <% else %>
         <li><%= link_to "Login", new_session_path %></li>
       <% end %>
-
     </ul>
   </nav>
-
-<%= yield %>
-
+        <div class="container">
+        <%= yield %>
+        </div>
 </body>
 </html>
