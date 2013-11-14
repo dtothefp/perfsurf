@@ -15,9 +15,15 @@ module SessionsHelper
   end
 
   def admin?
-    if !logged_in?
-      redirect_to new_user_path
-    elsif !current_user.admin
+    if logged_in?
+      current_user.admin # if logged in, return true IF ADMIN
+    else
+      false # if not logged in always return false
+    end
+  end
+
+  def admin_authorized!
+    unless admin?
       redirect_to user_path(current_user)
     end
   end
