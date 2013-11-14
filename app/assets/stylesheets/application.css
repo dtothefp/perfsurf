@@ -14,6 +14,28 @@
 
 * {
   box-sizing: border-box;
+  margin 0; 
+}
+
+.container {
+  height: 100%;
+  min-height: 800px;
+  position: relative;
+}
+
+.container {
+  margin-bottom: 14px;
+}
+
+.footer {
+  background: url('http://www.freshnessmag.com/wp-content/uploads/2009/07/vans-sk8-hi-deconstruct-flauge-limited-03.jpg');
+  background-size: 10% 104%;
+  margin-top: 100px;
+  height: 75px;
+}
+
+.footer p {
+  margin-bottom: 0;
 }
 
 body {
@@ -188,6 +210,7 @@ div.surf-height-display {
 #charts {
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
 .chart-placeholder {
@@ -200,4 +223,3 @@ div.surf-height-display {
 #wave-chart, #wind-chart {
  width: 100%;
 }
-
