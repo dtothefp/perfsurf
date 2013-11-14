@@ -185,11 +185,11 @@ div.surf-height-display {
   position: relative;
 }
 
-.chart-placeholder {
+/*.chart-placeholder {
   position: absolute;
   top: 0;
   left: 20%;
-}
+}*/
 
 .chart-placeholder img {
   width: 350px;

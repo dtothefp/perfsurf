@@ -44,8 +44,8 @@
           <% times_arr.each do |time, chartObj| %>
           <div class="chart-placeholder">
             <li><%= time %></li>
-            <li class="chart-li"><img src="<%= chartObj[:charts]["swell"] %>" width="400"></li>
-            <li class="chart-li"><img src="<%= chartObj[:charts]["wind"] %>" width="400"></li>
+            <li class="chart-li" data-img="<%= chartObj[:charts]["swell"] %>"></li>
+            <li class="chart-li" data-img="<%= chartObj[:charts]["wind"] %>"></li>
           </div>
           <% end %>
       <% end %>
