@@ -156,11 +156,11 @@ div.surf-height-display {
   border-radius: 10px;
 }
 
-.stats-placeholder:nth-child(2n+1), #wave-chart {
+.stats-placeholder:nth-child(2n+2), #wave-chart {
   padding-right: 10px;
 }
 
-.stats-placeholder:nth-child(2n+2), #wind-chart {
+.stats-placeholder:nth-child(2n+1), #wind-chart {
   padding-left: 10px;
 }
 
