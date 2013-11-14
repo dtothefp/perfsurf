@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.destroy_all
+Locaton.destroy_all
 
 User.create(email: "dtothefp@gmail.com", password: "tuna", password_confirmation: "tuna", admin: true)
 Location.create(name: "Kauai: Tunnels Beach", latitude: 22.2022161, longitude: -159.5029896, msw_id: 3051)
