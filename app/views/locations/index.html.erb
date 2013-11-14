@@ -6,22 +6,25 @@
   <% end %>
 </ul>
 
-<div id="map" style="height:400px; width:800px;"></div>
+<div id="map" style="height:600px; width:100%;"></div>
 
 <!-- <img src='<%= asset_path "usa-map.svg" %>' > -->
 
 <script>
 window.onload = function(){
-  console.log("loaded");
-  var map = kartograph.map('#map', 600, 400);
-  map.loadMap('<%= asset_path "world-map.svg" %>', function() {
-    map.addLayer('usa', {
-      styles: {
-         fill: '#dfdcdc',
-         stroke: '#fff'
-      }
-    });
-  });
+ 
+  var po = org.polymaps;
+
+  var map = po.map()
+    .container(document.getElementById("map").appendChild(po.svg("svg")))
+    .add(po.interact());
+
+  map.add(po.image()
+    .url(po.url("http://{S}tile.cloudmade.com"
+    + "/a3dfd94d4daf4954b831ca111bf6d2fd"
+    + "/998/256/{Z}/{X}/{Y}.png")
+    .hosts(["a.", "b.", "c.", ""])));
+
 }
 
 
