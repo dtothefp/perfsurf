@@ -22,14 +22,14 @@ body {
   background-size: cover;
 }
 
-.container a, nav a {
+.container a, nav a, .navbar-default .navbar-brand a {
   text-decoration: none;
-  -webkit-transition: all 600ms easing’s Bezier curve;
-  transition:         all 600ms easing’s Bezier curve;
+  -webkit-transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715);
+  transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.container a:hover, body .navbar-default .navbar-nav > li > a:hover {
-  color: red;
+.container a:hover, body .navbar-default .navbar-nav > li > a:hover, .navbar-default a.navbar-brand:hover {
+  color: MediumVioletRed;
   text-decoration: none;
 }
 
@@ -38,15 +38,45 @@ body {
   text-align: center;
 }
 
-.locations, .users, .all-locations, .user-list{
+.users, .all-locations{
   text-align: center;
   background: rgba(255, 255, 255, .5);
   width: 50%;
   margin: 20px auto;
   border-radius: 10px;
   padding: 10px;
-
 }
+
+.locations, .user-list {
+  width: 100%;
+  background: rgba(255, 255, 255, .5);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.locations section, .user-list ul {
+  float: left;
+  width: 50%;
+}
+
+.nav > li {
+  font-size: 18px;
+}
+
+
+
+/*body.navbar {
+ box-shadow: 0px 1px 50px #5E5E5E;
+ position:fixed;
+ top:0px;
+}*/
+
+/*#nav-inner-wrapper {
+  width: 1170px;
+  margin: 0 auto;
+}*/
 
 .locations li, .users li, .all-locations, .user-list {
   font-size: 20px;
@@ -324,4 +354,63 @@ input[type="submit"] {
   font-family: 'Cuprum', sans-serif;
 }
 
+.compass {
+  display: none;
+}
 
+.user-form form input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.users li {
+  padding: 10px;
+}
+
+/*circle {
+  display: none;
+}*/
+
+
+/***** MEDIA QUERIES *******/
+
+@media only screen 
+and (max-width : 750px) {
+
+  .all-locations {
+    width: 100%;
+  }
+
+  .stats-placeholder, .locations section, .user-list ul {
+    float: none;
+    padding: 0;
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+  }
+
+  .stats-placeholder:nth-child(2n+2), .stats-placeholder:nth-child(2n+1) {
+    padding: 0;
+  }
+
+  .chart-placeholder {
+    float: none;
+    width: 90%;
+    display: block;
+    margin: 10px auto;
+  }
+
+  .instagram-placeholder img {
+    width: 60%;
+  }
+
+  .sign-up {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+
+
+}

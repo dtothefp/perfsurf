@@ -1,13 +1,12 @@
-<h1>All Locations</h1>
 <div class="all-locations">
   <ul>
   <% @locations.each do |location| %>
     <li><%= link_to location.name, location_path(location) %></li>
   <% end %>
   </ul>
-
-  <div id="map" style="height:600px; width:100%;"></div>
 </div>
+
+<div id="map" style="height:600px; width:100%;"></div>
 
 <script>
 window.onload = function(){
@@ -18,7 +17,7 @@ window.onload = function(){
 
   var map = po.map() //create new map object
       .container($n(svg)) //set it's container as the po svg object
-      .center({lat: 37.787, lon: -122.228})
+      .center({lat: 38.481, lon: -40.581})
       .zoom(2)
       .add(po.interact()); //add to the map a po.interaction ability?
 
@@ -28,8 +27,18 @@ window.onload = function(){
       + "/998/256/{Z}/{X}/{Y}.png")
       .hosts(["a.", "b.", "c.", ""])));
 
+  function coordinateToInt(featureObj){
+    $.each(featureObj, function(key, value){
+       var long = value["geometry"]["coordinates"][0];
+       var lat = value["geometry"]["coordinates"][1];
+       value["geometry"]["coordinates"][1] = parseFloat(lat);
+       value["geometry"]["coordinates"][0] = parseFloat(long);
+    });
+    return featureObj;
+  }
+
   map.add(po.geoJson()
-      .features(<%= raw @top_level_arr.to_json %>) // BUILD FEATURES ARRAY!
+      .features(coordinateToInt(<%= raw @top_level_arr.to_json %>)) // BUILD FEATURES ARRAY!
       .on("load", load));
 
   // map.add(po.geoJson()
@@ -44,7 +53,8 @@ window.onload = function(){
   function load(e) {
       console.log(e);
       //this is the "point's" radius
-    
+    var counter = 0;
+    var previousTimestamp = "";
     for (var i = 0; i < e.features.length; i++) { // ITERATE FEATURES ARRAY
       var c = n$(e.features[i].element), //this is EACH POINT's center as a map lat long (and it centers the map here) 
           g = c.parent().add("svg:g", c); //this instantiates an svg object and adds it to the page at center point
@@ -54,16 +64,18 @@ window.onload = function(){
       //build gradient
       var gradientId = "r" + i; // allows us to iterate
       var wind = e.features[i].data.geometry.wind;
-      var wave = e.features[i].data.geometry.wind;
+      var wave = e.features[i].data.geometry.wave;
+      var timestamp = e.features[i].data.geometry.timestamp;
+      var locationId = e.features[i].data.geometry.location_id
       var colorPrimary;
       var colorSecondary;
-      var r = 12 * Math.pow(2, e.tile.zoom - 2);
+      var r = 2 * wind * Math.pow(2, e.tile.zoom - 2);
 
       //choose gradient color
-      if ( wave < 3 ) {
+      if ( wind < 3 ) {
           colorPrimary = "#0BF721";
           colorSecondary = "#EFF70B";
-      } else if ( wave > 6 && wave < 10 ) {
+      } else if ( wind > 6 && wind < 10 ) {
           colorPrimary = "#F7C20B";
           colorSecondary = "#F7850B";
       } else {
@@ -71,26 +83,63 @@ window.onload = function(){
          colorSecondary = "#F7640B"
       }
 
-      svg.add("svg:radialGradient")
-        .attr("id", gradientId) /////////!!!!!!!!!!!!!!!!!!!
-        .attr("fx", 0.5)
-        .attr("fy", 0.9)
-      .add("svg:stop")
-        .attr("offset", "0%")
-        .attr("stop-color", colorPrimary)
-        .parent()
-      .add("svg:stop")
-        .attr("offset", "100%")
-        .attr("stop-color", colorSecondary);
+      if ( previousTimestamp === timestamp ){
+        svg.add("svg:radialGradient")
+          .attr("id", gradientId) /////////!!!!!!!!!!!!!!!!!!!
+          .attr("fx", 0.5)
+          .attr("fy", 0.9)
+        .add("svg:stop")
+          .attr("offset", "0%")
+          .attr("stop-color", colorPrimary)
+          .parent()
+        .add("svg:stop")
+          .attr("offset", "100%")
+          .attr("stop-color", colorSecondary);
 
-      //build circle and add gradient
-       g.add(
-           c.attr("fill", "url(#" + gradientId + ")")
-           .attr("r", r)
-           .attr("id", gradientId) );
-      
+        //build circle and add gradient
+         g.add(
+             c.attr("fill", "url(#" + gradientId + ")")
+             .attr("r", r)
+             .attr("id", gradientId)
+             .attr("class", "timestamp-" + counter)
+             .attr("data-wind", wind)
+             .attr("data-wave", wave)
+             .attr("data-timestamp", timestamp)
+             .attr("data-locationid", locationId) );
+          previousTimestamp = timestamp;
+       } else {
+        counter ++
+        svg.add("svg:radialGradient")
+          .attr("id", gradientId) /////////!!!!!!!!!!!!!!!!!!!
+          .attr("fx", 0.5)
+          .attr("fy", 0.9)
+        .add("svg:stop")
+          .attr("offset", "0%")
+          .attr("stop-color", colorPrimary)
+          .parent()
+        .add("svg:stop")
+          .attr("offset", "100%")
+          .attr("stop-color", colorSecondary);
+
+        //build circle and add gradient
+         g.add(
+             c.attr("fill", "url(#" + gradientId + ")")
+             .attr("r", r)
+             .attr("id", gradientId)
+             .attr("class", "timestamp-" + counter)
+             .attr("data-wind", wind)
+             .attr("data-wave", wave)
+             .attr("data-timestamp", timestamp) );
+         previousTimestamp = timestamp;
+       }
     }
   }
+featureObj = <%= raw @top_level_arr.to_json %>
+
+
+/**************** Animate Circles **************/
+
+
 
 }
 

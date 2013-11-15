@@ -3,10 +3,12 @@
 <% end %>
 <h1>Favorite Locations</h1>
 <div class="user-list">
-  <ul>
+  
     <% @locations.each do |location| %>
-      <li><%= image_tag location.image.url(:medium) %></li>
-      <li><%= link_to location.name, location_path(location) %></li>
+      <ul>
+        <li><%= image_tag location.image.url(:medium) %></li>
+        <li><%= link_to location.name, location_path(location) %></li>
+      </ul>
     <% end %>
-  </ul>
+  
 </div>
