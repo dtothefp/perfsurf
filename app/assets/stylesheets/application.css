@@ -384,6 +384,19 @@ input[type="submit"] {
   margin: 30px 20px;
 }
 
+.locations ul, .locations li {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.locations ul {
+  margin-bottom: 10px;
+}
+
+
+
 circle {
   display: none;
 }
