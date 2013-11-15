@@ -44,6 +44,17 @@ class Response
     return full_stats
   end
 
+  def coordinates_hash(location)
+    {
+      "coordinates" => [location.longitude, location.latitude], 
+      "type" => "Point", 
+      "wind" => get_http_obj["wind"]["speed"], 
+      "wave" => get_http_obj["swell"]["components"]["primary"]["height"], 
+      "timestamp" => Time.at(get_http_obj["timestamp"]).strftime("%A, %b %e, %l%p"), 
+      "name" => location.name, "location_id" => location.id 
+    }
+  end
+
   def msw_to_map(day_time_index, all_locations)
     self.get_http_obj[day_time_index]
   end
