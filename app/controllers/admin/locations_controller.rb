@@ -1,7 +1,7 @@
 ## ADMIN LOCATIONS CONTROLLER ##
 class Admin::LocationsController < ApplicationController
 
-  before_action :admin?
+ before_action :admin_authorized!
 
   def index
     @locations = Location.all
