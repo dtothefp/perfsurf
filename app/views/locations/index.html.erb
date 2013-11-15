@@ -67,6 +67,7 @@ window.onload = function(){
       var wave = e.features[i].data.geometry.wave;
       var timestamp = e.features[i].data.geometry.timestamp;
       var locationId = e.features[i].data.geometry.location_id
+      console.log(locationId);
       var colorPrimary;
       var colorSecondary;
       var r = 5 * wave * Math.pow(2, e.tile.zoom - 2);
@@ -129,7 +130,8 @@ window.onload = function(){
              .attr("class", "timestamp-" + counter)
              .attr("data-wind", wind)
              .attr("data-wave", wave)
-             .attr("data-timestamp", timestamp) );
+             .attr("data-timestamp", timestamp)
+             .attr("data-locationid", locationId) );
          previousTimestamp = timestamp;
        }
     }
