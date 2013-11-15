@@ -32,7 +32,7 @@
       <% if logged_in? %>
         <li><%= link_to "All Locations", locations_path %></li>
         <li><%= link_to "myAcct", current_user %></li>
-        <li><%= link_to "Edit Account", edit_user_path(@user) %> </li>
+        <li><%= link_to "Edit Account", edit_user_path(session[:user_id]) %> </li>
         <li><%= link_to "Logout", session_path, :method => :delete %></li>
       <% else %>
         <li><%= link_to "Login", new_session_path %></li>
