@@ -1,5 +1,7 @@
-<h1>Edit</h1><%= @user.email %>
-
-<%= render 'form' %>
-
-<%= link_to "Delete Profile", user_path(@user), :method => :delete %>
+<h1>Edit</h1>
+<div class="sign-up">
+  <div class="user-form">
+    <%= render 'form' %>
+  </div>
+  <%= link_to "Delete Profile", user_path(@user), :method => :delete %>
+</div>

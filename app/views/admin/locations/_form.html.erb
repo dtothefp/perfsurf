@@ -4,21 +4,22 @@
   <% end %>
 <% end %>
 
-<%= form_for [:admin, @location], html: { multipart: true } do |f| %>
-  <%= f.label :location_name %>
-  <%= f.text_field :name %>
+  <%= form_for [:admin, @location], html: { multipart: true, :class => "sign-up-form"} do |f| %>
 
-  <%= f.label :latitude %>
-  <%= f.number_field :latitude, :step => "any" %>
+    <%= f.label :location_name %>
+    <%= f.text_field :name %>
 
-  <%= f.label :longitude %>
-  <%= f.number_field :longitude, :step => "any"%>
+    <%= f.label :latitude %>
+    <%= f.number_field :latitude, :step => "any" %>
 
-  <%= f.label :image %>
-  <%= f.file_field :image, class: "location-image" %>
+    <%= f.label :longitude %>
+    <%= f.number_field :longitude, :step => "any"%>
 
-  <%= f.label :magic_seaweed_id %>
-  <%= f.number_field :msw_id %>
+    <%= f.label :magic_seaweed_id %>
+    <%= f.number_field :msw_id %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+
+    <%= f.submit %>
+  <% end %>

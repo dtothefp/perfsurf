@@ -1,13 +1,14 @@
-<%= link_to "Add Location", new_admin_location_path %>
+<h1>PerfSurf Locations</h1>
 
-<h1>PerfSurf Destinations</h1>
-
-<ul>
-  <% @locations.each do |location| %>
-    <li><%= location.name %></li>
-    <li><%= location.msw_id %></li>
-    <li><%= image_tag location.image.url(:thumb) %></li>
-    <%= link_to "Delete Location", admin_location_path(location), :method => :delete %>
-    <%= link_to "Edit Location", edit_admin_location_path(location) %>
-  <% end %>
-</ul>
+<div class="locations">
+  <ul>
+    <% @locations.each do |location| %>
+      <section>
+        <li><%= location.name %>: <%= location.msw_id %></li>
+        <li><%= image_tag location.image.url(:medium) %></li>
+        <%= link_to "Delete Location", admin_location_path(location), :method => :delete %>
+        <%= link_to "Edit Location", edit_admin_location_path(location) %>
+      </section>
+    <% end %>
+  </ul>
+</div>
