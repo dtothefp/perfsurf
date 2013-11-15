@@ -44,4 +44,8 @@ class Response
     return full_stats
   end
 
+  def msw_to_map(day_time_index, all_locations)
+    self.get_http_obj[day_time_index]
+  end
+
 end

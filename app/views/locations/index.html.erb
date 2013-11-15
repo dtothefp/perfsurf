@@ -15,15 +15,83 @@ window.onload = function(){
  
   var po = org.polymaps;
 
-  var map = po.map()
-    .container(document.getElementById("map").appendChild(po.svg("svg")))
-    .add(po.interact());
+  var svg = n$("#map").add("svg:svg"); //instantiate the po svg object
+
+  var map = po.map() //create new map object
+      .container($n(svg)) //set it's container as the po svg object
+      .center({lat: 37.787, lon: -122.228})
+      .zoom(2)
+      .add(po.interact()); //add to the map a po.interaction ability?
 
   map.add(po.image()
-    .url(po.url("http://{S}tile.cloudmade.com"
-    + "/a3dfd94d4daf4954b831ca111bf6d2fd"
-    + "/998/256/{Z}/{X}/{Y}.png")
-    .hosts(["a.", "b.", "c.", ""])));
+      .url(po.url("http://{S}tile.cloudmade.com"
+      + "/1a1b06b230af4efdbb989ea99e9841af" // http://cloudmade.com/register
+      + "/998/256/{Z}/{X}/{Y}.png")
+      .hosts(["a.", "b.", "c.", ""])));
+
+  map.add(po.geoJson()
+      .features(<%= raw @top_level_arr.to_json %>) // BUILD FEATURES ARRAY!
+      .on("load", load));
+
+  // map.add(po.geoJson()
+  //     .features([{geometry: {coordinates: [-122.258, 37.805], type: "Point", wind: "5"}},
+  //         {geometry: {coordinates: [-159.502, 22.202], type: "Point"}, wind: "24"}]) // BUILD FEATURES ARRAY!
+  //     .on("load", load));
+
+  map.add(po.compass()
+      .pan("none"));
+
+  /** Post-process the GeoJSON points and replace them with shiny balls! */
+  function load(e) {
+      console.log(e);
+      //this is the "point's" radius
+    
+    for (var i = 0; i < e.features.length; i++) { // ITERATE FEATURES ARRAY
+      var c = n$(e.features[i].element), //this is EACH POINT's center as a map lat long (and it centers the map here) 
+          g = c.parent().add("svg:g", c); //this instantiates an svg object and adds it to the page at center point
+
+      g.attr("transform", "translate(" + c.attr("cx") + "," + c.attr("cy") + ")"); //moves the point to the right spot on the map
+
+      //build gradient
+      var gradientId = "r" + i; // allows us to iterate
+      var wind = e.features[i].data.geometry.wind;
+      var wave = e.features[i].data.geometry.wind;
+      var colorPrimary;
+      var colorSecondary;
+      var r = 12 * Math.pow(2, e.tile.zoom - 2);
+
+      //choose gradient color
+      if ( wave < 3 ) {
+          colorPrimary = "#0BF721";
+          colorSecondary = "#EFF70B";
+      } else if ( wave > 6 && wave < 10 ) {
+          colorPrimary = "#F7C20B";
+          colorSecondary = "#F7850B";
+      } else {
+         colorPrimary = "#F7100B";
+         colorSecondary = "#F7640B"
+      }
+
+      svg.add("svg:radialGradient")
+        .attr("id", gradientId) /////////!!!!!!!!!!!!!!!!!!!
+        .attr("fx", 0.5)
+        .attr("fy", 0.9)
+      .add("svg:stop")
+        .attr("offset", "0%")
+        .attr("stop-color", colorPrimary)
+        .parent()
+      .add("svg:stop")
+        .attr("offset", "100%")
+        .attr("stop-color", colorSecondary);
+
+      //build circle and add gradient
+       g.add(
+           c.attr("fill", "url(#" + gradientId + ")")
+           .attr("r", r)
+           .attr("id", gradientId) );
+      
+    }
+  }
 
 }
 
