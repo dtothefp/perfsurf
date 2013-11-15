@@ -5,9 +5,9 @@
     <li><%= link_to location.name, location_path(location) %></li>
   <% end %>
   </ul>
-
-  <div id="map" style="height:600px; width:100%;"></div>
 </div>
+
+<div id="map" style="height:600px; width:100%;"></div>
 
 <script>
 window.onload = function(){
@@ -18,7 +18,7 @@ window.onload = function(){
 
   var map = po.map() //create new map object
       .container($n(svg)) //set it's container as the po svg object
-      .center({lat: 37.787, lon: -122.228})
+      .center({lat: 38.481, lon: -40.581})
       .zoom(2)
       .add(po.interact()); //add to the map a po.interaction ability?
 
@@ -28,8 +28,18 @@ window.onload = function(){
       + "/998/256/{Z}/{X}/{Y}.png")
       .hosts(["a.", "b.", "c.", ""])));
 
+  function coordinateToInt(featureObj){
+    $.each(featureObj, function(key, value){
+       var long = value["geometry"]["coordinates"][0];
+       var lat = value["geometry"]["coordinates"][1];
+       value["geometry"]["coordinates"][1] = parseFloat(lat);
+       value["geometry"]["coordinates"][0] = parseFloat(long);
+    });
+    return featureObj;
+  }
+
   map.add(po.geoJson()
-      .features(<%= raw @top_level_arr.to_json %>) // BUILD FEATURES ARRAY!
+      .features(coordinateToInt(<%= raw @top_level_arr.to_json %>)) // BUILD FEATURES ARRAY!
       .on("load", load));
 
   // map.add(po.geoJson()
@@ -91,7 +101,7 @@ window.onload = function(){
       
     }
   }
-
+featureObj = <%= raw @top_level_arr.to_json %>
 }
 
 
