@@ -1,14 +1,14 @@
 <h1>PerfSurf Locations</h1>
 
 <div class="locations">
-  <ul>
     <% @locations.each do |location| %>
       <section>
-        <li><%= location.name %>: <%= location.msw_id %></li>
-        <li><%= image_tag location.image.url(:medium) %></li>
+        <ul>
+          <li><%= location.name %>: <%= location.msw_id %></li>
+          <li><%= image_tag location.image.url(:medium) %></li>
+        </ul>
         <%= link_to "Delete Location", admin_location_path(location), :method => :delete %>
         <%= link_to "Edit Location", edit_admin_location_path(location) %>
       </section>
     <% end %>
-  </ul>
 </div>
