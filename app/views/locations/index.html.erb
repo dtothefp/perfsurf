@@ -1,14 +1,13 @@
-<h1>Locations Index for Users</h1>
-
-<ul>
+<h1>All Locations</h1>
+<div class="all-locations">
+  <ul>
   <% @locations.each do |location| %>
     <li><%= link_to location.name, location_path(location) %></li>
   <% end %>
-</ul>
+  </ul>
 
-<div id="map" style="height:600px; width:100%;"></div>
-
-<!-- <img src='<%= asset_path "usa-map.svg" %>' > -->
+  <div id="map" style="height:600px; width:100%;"></div>
+</div>
 
 <script>
 window.onload = function(){

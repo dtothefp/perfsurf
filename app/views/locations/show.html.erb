@@ -7,6 +7,7 @@
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
   <input id="favoriteId" type="hidden" name="favorite_id" value="<%= Favorite.where(user_id: session[:user_id]).where(location_id: @location.id).first.id %>" />
   <button id="button" class="btn btn-primary btn-lg">Delete Favorite</button>
+  </form>
 <% else %>
   <form id="add-favorite-form">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />

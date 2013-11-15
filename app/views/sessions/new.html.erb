@@ -1,10 +1,14 @@
 <h1>Sign In</h1>
-<%= form_tag session_path, :method => :post do %>
-<%= label_tag :email %>
-<%= text_field_tag :email %>
+    <div class="user-form">
+      <div class="sign-up">
+        <%= form_tag session_path, :method => :post do %>
+        <%= label_tag :email %>
+        <%= text_field_tag :email %>
 
-<%= label_tag :password %>
-<%= password_field_tag :password %>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
 
-<%= submit_tag "Submit" %>
-<% end %>
+        <%= submit_tag "Submit" %>
+        <% end %>
+      </div>
+  </div>

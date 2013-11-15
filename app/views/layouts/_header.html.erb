@@ -15,6 +15,7 @@
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li><%= link_to "All Users", admin_users_path %></li>
+        <li><%= link_to "All Locations", admin_locations_path %></li>
         <li><%= link_to "Add New Location", new_admin_location_path %></li>
         <li><%= link_to "Logout", session_path, :method => :delete %></li>
         <li><%= link_to "myAcct", current_user %></li>
@@ -29,12 +30,14 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-        <li><%= link_to "Logout", session_path, :method => :delete %></li>
+        <li><%= link_to "All Locations", locations_path %></li>
         <li><%= link_to "myAcct", current_user %></li>
-        <% else %>
+        <li><%= link_to "Edit Account", edit_user_path(@user) %> </li>
+        <li><%= link_to "Logout", session_path, :method => :delete %></li>
+      <% else %>
         <li><%= link_to "Login", new_session_path %></li>
       <% end %>
-      </ul>
+    </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
 <% end %>

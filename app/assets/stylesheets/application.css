@@ -17,6 +17,38 @@
   margin: 0; 
 }
 
+body {
+  background: url('http://4.bp.blogspot.com/-EUE9rKUXNkk/TZFximtyi0I/AAAAAAAAAX4/LZsnVOqnIgA/s1600/SingleFinNoseRide.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.container h1 {
+  font-family: 'Cuprum', sans-serif;
+  text-align: center;
+}
+
+.locations, .users, .all-locations, .user-list{
+  text-align: center;
+  background: rgba(255, 255, 255, .5);
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 10px;
+
+}
+
+.locations li, .users li, .all-locations, .user-list {
+  font-size: 20px;
+}
+
+section {
+  margin-top: 20px;
+}
+
+.users a {
+  font-size: 15px;
+}
+
 .container {
   height: 100%;
   min-height: 800px;
@@ -36,11 +68,6 @@
 
 .footer p {
   margin-bottom: 0;
-}
-
-body {
-  background: url('http://4.bp.blogspot.com/-EUE9rKUXNkk/TZFximtyi0I/AAAAAAAAAX4/LZsnVOqnIgA/s1600/SingleFinNoseRide.jpg') no-repeat center center;
-  background-size: cover;
 }
 
 a.navbar-brand {
@@ -88,6 +115,7 @@ li {
   list-style-type: none;
   /*float: left;*/
   margin:5px;
+  font-family: 'Cuprum', sans-serif;
 }
 
 .stats-placeholder {
@@ -236,3 +264,44 @@ div.surf-height-display {
 .chart-placeholder:last-child {
   padding-left: 10px;
 }
+
+input[type="submit"] {
+  background-color: rgb(50, 118, 177);
+  color: white;
+  height: 2.5em;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.sign-up {
+  text-align: center; 
+  background: rgba(255, 255, 255, .5);
+  width: 30%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.sign-up a {
+  margin-top: 20px; 
+}
+
+.user-form {
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.user-form input {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.user-form input[type="submit"] {
+  margin-top: 20px; 
+}
+
+
