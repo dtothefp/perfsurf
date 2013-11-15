@@ -6,7 +6,7 @@
   </ul>
 </div>
 
-<div id="map" style="height:600px; width:100%;"></div>
+<div id="map" style="height:800px; width:100%;"></div>
 
 <script>
 window.onload = function(){
@@ -17,8 +17,8 @@ window.onload = function(){
 
   var map = po.map() //create new map object
       .container($n(svg)) //set it's container as the po svg object
-      .center({lat: 38.481, lon: -40.581})
-      .zoom(2)
+      .center({lat: 43.009, lon: 4.560})
+      .zoom(2.2)
       .add(po.interact()); //add to the map a po.interaction ability?
 
   map.add(po.image()
