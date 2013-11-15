@@ -1,7 +1,5 @@
 Perfsurf::Application.routes.draw do
-  root 'users#new'
-
-  resources :static, only: [:index, :show]
+  root 'locations#index'
 
   resources :users 
 
@@ -11,10 +9,6 @@ Perfsurf::Application.routes.draw do
 
   namespace :json do
     resources :locations
-  end
-
-  resources :users, shallow: true do
-    resources :favorites
   end
 
   namespace :admin do

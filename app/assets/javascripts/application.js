@@ -21,3 +21,4 @@
 //= require instagram.js
 //= require polymaps.min.js
 //= require nns.js
+//= require locationsmap.js.erb
