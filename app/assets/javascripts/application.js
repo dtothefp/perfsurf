@@ -19,3 +19,4 @@
 //= require favorites.js
 //= require perfsurfApi.js
 //= require instagram.js
+//= require polymaps.min.js
