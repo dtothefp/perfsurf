@@ -22,6 +22,17 @@ body {
   background-size: cover;
 }
 
+.container a, nav a {
+  text-decoration: none;
+  -webkit-transition: all 600ms easing’s Bezier curve;
+  transition:         all 600ms easing’s Bezier curve;
+}
+
+.container a:hover, body .navbar-default .navbar-nav > li > a:hover {
+  color: red;
+  text-decoration: none;
+}
+
 .container h1 {
   font-family: 'Cuprum', sans-serif;
   text-align: center;
@@ -302,6 +313,15 @@ input[type="submit"] {
 
 .user-form input[type="submit"] {
   margin-top: 20px; 
+}
+
+#location_image {
+  position: relative;
+  left: 56px;
+}
+
+.container label {
+  font-family: 'Cuprum', sans-serif;
 }
 
 
