@@ -56,10 +56,15 @@ body {
   overflow: hidden;
 }
 
-.locations section, .user-list ul {
+.user-list ul {
   float: left;
   width: 50%;
 }
+
+.locations section {
+    display: inline-block;
+    width: 48%;
+  }
 
 .nav > li {
   font-size: 18px;
@@ -418,6 +423,11 @@ and (max-width : 750px) {
     margin: 10px auto;
     width: 90%;
   }
+
+  .locations section {
+    display: inline;
+  }
+
 
   .stats-placeholder:nth-child(2n+2), .stats-placeholder:nth-child(2n+1) {
     padding: 0;
