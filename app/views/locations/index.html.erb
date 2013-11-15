@@ -69,7 +69,7 @@ window.onload = function(){
       var locationId = e.features[i].data.geometry.location_id
       var colorPrimary;
       var colorSecondary;
-      var r = 2 * wind * Math.pow(2, e.tile.zoom - 2);
+      var r = 5 * wave * Math.pow(2, e.tile.zoom - 2);
 
       //choose gradient color
       if ( wind < 3 ) {

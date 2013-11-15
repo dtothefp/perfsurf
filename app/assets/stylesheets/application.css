@@ -380,7 +380,7 @@ input[type="submit"] {
 }
 
 .all-locations li {
-  display: inline;
+  display: inline-block;
   margin: 30px 20px;
 }
 
