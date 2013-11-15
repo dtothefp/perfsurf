@@ -1,8 +1,8 @@
+<% if admin? %>
+  <h1>Welcome Administrator!</h1>
+<% end %>
 <h1>Favorite Locations</h1>
 <div class="user-list">
-  <% if admin? %>
-    <h1>Welcome Administrator!</h1>
-  <% end %>
   <ul>
     <% @locations.each do |location| %>
       <li><%= image_tag location.image.url(:medium) %></li>
