@@ -130,8 +130,8 @@ CircleOverlay.prototype.draw = function() {
   // div.style.width = (2*this.wind) + 'px';
   // div.style.height = (2*this.wind) + 'px';
 
-  div.style.left = (sw.x - this.wind/2) + 'px';
-  div.style.top = (ne.y - this.wind/2) + 'px';
+  div.style.left = (sw.x - this.wind) + 'px';
+  div.style.top = (ne.y - this.wind) + 'px';
   div.style.width = (4*(ne.x - sw.x) + this.wind*2) + 'px';
   div.style.height = (3.5*(sw.y - ne.y) + this.wind*2) + 'px';
 };
@@ -148,17 +148,17 @@ function circleCallback(counter, headerData){
     console.log("[data-sequence='timestmp-" + (counter-1) + "']");
     console.log("[data-sequence='timestmp-" + counter + "']");
     if (  counter != 1 ) {
-      $("div.wind-images[data-sequence='timestmp-" + (counter-1) + "']").css('display', 'none');
-      $("div.wind-images[data-sequence='timestmp-" + counter + "']").css('display', 'block'); 
+      $("div.wind-images[data-sequence='timestmp-" + (counter-1) + "']").hide();
+      $("div.wind-images[data-sequence='timestmp-" + counter + "']").show(); 
     }
     console.log((headerData[counter-1]["timestamp"]));
     $('#time-counter').text(headerData[counter-1]["timestamp"]);
     counter ++;
     setTimeout(function(){circleCallback(counter, headerData)}, 400);
   } else if ( counter > timestampStats.length ) {
-    $("div.wind-images[data-sequence='timestmp-" + (counter-1) + "']").css('display', 'none');
+    $("div.wind-images[data-sequence='timestmp-" + (counter-1) + "']").hide();
     counter = 1;
-    $("div.wind-images[data-sequence='timestmp-" + counter + "']").css('display', 'block');
+    $("div.wind-images[data-sequence='timestmp-" + counter + "']").show();
     setTimeout(function(){circleCallback(counter, headerData)}, 400);
   }
 } 
