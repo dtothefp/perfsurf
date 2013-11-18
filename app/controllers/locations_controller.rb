@@ -7,21 +7,17 @@ class LocationsController < ApplicationController
   def index 
     @locations = Location.all
 
-    @top_level_arr = []
-
+    
+    @markerOptions = {}
     @locations.each do |location|
-      responses = HTTParty.get("http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=" + location.msw_id.to_s )
-
-      responses.map { |r| Response.new(r) }.each do |response|
-        @top_level_arr << {"geometry" => response.coordinates_hash(location) }
+      locations_arr = []
+      @responses = HTTParty.get("http://magicseaweed.com/api/pGQx9a7IXwVYs3lIcQ8RV5E0y74Xmg9Y/forecast/?spot_id=" + location.msw_id.to_s )
+      @responses.map { |r| Response.new(r) }.each do |response|
+        locations_arr.push(response.marker_options_hash(location))
       end
+      @markerOptions[location.name] = locations_arr
     end
-
-    if logged_in?
-      render :index
-    else
-      redirect_to new_session_path
-    end
+    # binding.pry
   end
 
   def show
@@ -31,6 +27,11 @@ class LocationsController < ApplicationController
     @msw = @responses.get_http_obj
     @chart_array = @responses.get_chart_data.to_json
     @stats = @responses.timestamp_to_object
+    # if logged_in?
+    #   render :show
+    # else
+    #   redirect_to new_session_path
+    # end
   end
 
 end

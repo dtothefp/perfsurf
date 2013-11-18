@@ -44,14 +44,14 @@ class Response
     return full_stats
   end
 
-  def coordinates_hash(location)
+  def marker_options_hash(location)
     {
-      "coordinates" => [location.longitude, location.latitude], 
-      "type" => "Point", 
-      "wind" => get_http_obj["wind"]["speed"], 
-      "wave" => get_http_obj["swell"]["components"]["primary"]["height"], 
-      "timestamp" => Time.at(get_http_obj["timestamp"]).strftime("%A, %b %e, %l%p"), 
-      "name" => location.name, "location_id" => location.id 
+      "latitude" => location.latitude, 
+      "longitude" => location.longitude, 
+      "id" => location.id,
+      "wind" => @http_obj["wind"],
+      "swell" => @http_obj["swell"],
+      "timestamp" => @http_obj["timestamp"]
     }
   end
 
