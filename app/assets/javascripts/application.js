@@ -22,3 +22,4 @@
 //= require polymaps.min.js
 //= require nns.js
 //= require locationsmap.js.erb
+//= require jqueryUi.js

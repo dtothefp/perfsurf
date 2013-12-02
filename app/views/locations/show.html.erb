@@ -71,7 +71,7 @@ $(window).load(function(){
   // Rotate Arrows for Wind Direction
   var directions = $('li.wind-direction');
   $.each( directions, function(i,el) {
-    $(el).find("img").css("-webkit-transform", "rotate(" + ( parseInt($(el).text()) + 180 )+ "deg)");
+    $(el).find("img").css({"-webkit-transform":"rotate(" + ( parseInt($(el).text()) + 180 )+ "deg)", "-ms-transform":"rotate(" + ( parseInt($(el).text()) + 180 )+ "deg)", "transform":"rotate(" + ( parseInt($(el).text()) + 180 )+ "deg)"});
   });
 
   // Color wind boxes

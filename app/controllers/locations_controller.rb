@@ -27,6 +27,7 @@ class LocationsController < ApplicationController
     @msw = @responses.get_http_obj
     @chart_array = @responses.get_chart_data.to_json
     @stats = @responses.timestamp_to_object
+    # binding.pry
     # if logged_in?
     #   render :show
     # else

@@ -51,7 +51,8 @@ class Response
       "id" => location.id,
       "wind" => @http_obj["wind"],
       "swell" => @http_obj["swell"],
-      "timestamp" => @http_obj["timestamp"]
+      "day" => Time.at(@http_obj["timestamp"]).strftime("%A, %b %e"),
+      "hour" => Time.at(@http_obj["timestamp"]).strftime("%l%p")
     }
   end
 
