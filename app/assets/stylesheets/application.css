@@ -131,9 +131,13 @@ section {
   margin-bottom: 0;
 }
 
-a.navbar-brand {
+a.navbar-brand, #location-title h1 {
   font-family: 'Pacifico';
   font-size: 25px;
+}
+
+#location-title h1 {
+  font-size: 32px;
 }
 
  .instagram {
