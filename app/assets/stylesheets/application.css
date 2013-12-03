@@ -450,7 +450,7 @@ input[type="submit"] {
 /***** MEDIA QUERIES *******/
 
 @media only screen 
-and (max-width : 750px) {
+and (max-width : 850px) {
 
   .all-locations {
     width: 100%;
@@ -487,6 +487,12 @@ and (max-width : 750px) {
   .sign-up {
     width: 80%;
     margin: 0 auto;
+  }
+
+  #location, #location-title {
+  display: block;
+  width: 100%;
+  float: none;
   }
 
 
