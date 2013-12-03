@@ -1,21 +1,27 @@
 <div id="location-header">
-  <div id="location" data-location-id="<%= @location.id %>" ></div>
+  <div id="location-title">
+    <h1><%= @location.name %></h1>
+    <% if @user.locations.include?(@location) %>
+    <form id="delete-favorite-form">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+    <input id="favoriteId" type="hidden" name="favorite_id" value="<%= Favorite.where(user_id: session[:user_id]).where(location_id: @location.id).first.id %>" />
+    <button id="button" class="btn btn-primary btn-lg">Delete Favorite</button>
+    </form>
+  <% else %>
+    <form id="add-favorite-form">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+    <input id="userId" type="hidden" name="user_id" value="<%= session[:user_id] %>" />
+    <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" />
+    <button id="button" class="btn btn-primary btn-lg">Add Favorite</button>
+    </form>
+  <% end %>
+  </div>
+  <div id="location" data-location-id="<%= @location.id %>" >
+  <!-- Instagram photos go here -->
+  </div>
 </div>
 
-<% if @user.locations.include?(@location) %>
-  <form id="delete-favorite-form">
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <input id="favoriteId" type="hidden" name="favorite_id" value="<%= Favorite.where(user_id: session[:user_id]).where(location_id: @location.id).first.id %>" />
-  <button id="button" class="btn btn-primary btn-lg">Delete Favorite</button>
-  </form>
-<% else %>
-  <form id="add-favorite-form">
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <input id="userId" type="hidden" name="user_id" value="<%= session[:user_id] %>" />
-  <input id="locationId" type="hidden" name="location_id" value="<%= @location.id %>" />
-  <button id="button" class="btn btn-primary btn-lg">Add Favorite</button>
-  </form>
-<% end %>
+<br style="clear:both;">
 
 <% @stats.each do |key, value| %>
 <div id="<%= key %>" class="stats-placeholder">
@@ -43,8 +49,8 @@
 <div id="charts">
   <h3></h3>
   <p></p>
-  <li class="chart-placeholder">Waves<img src="" alt="" id="wave-chart"></li>
-  <li class="chart-placeholder">Wind<img src="" alt="" id="wind-chart"></li>
+  <li class="chart-placeholder"><h4>Waves</h3><img src="" alt="" id="wave-chart"></li>
+  <li class="chart-placeholder"><h4>Wind</h3><img src="" alt="" id="wind-chart"></li>
 </div>
 
 <script>
