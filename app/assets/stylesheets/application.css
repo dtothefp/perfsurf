@@ -454,6 +454,13 @@ input[type="submit"] {
 /***** MEDIA QUERIES *******/
 
 @media only screen 
+and (max-width : 1200px) {
+ .instagram-placeholder img {
+    width: 130px;
+  }
+}
+
+@media only screen 
 and (max-width : 850px) {
 
   .all-locations {
@@ -484,10 +491,6 @@ and (max-width : 850px) {
     margin: 10px auto;
   }
 
-  .instagram-placeholder img {
-    padding: 5px;
-  }
-
   .sign-up {
     width: 80%;
     margin: 0 auto;
@@ -498,7 +501,15 @@ and (max-width : 850px) {
   width: 100%;
   float: none;
   }
+}
 
+@media only screen 
+and (max-width : 500px) {
+  #location-title {
+    padding: 65px;
+  }
 
-
+  .instagram-placeholder img {
+    width: 120px;
+  }
 }
