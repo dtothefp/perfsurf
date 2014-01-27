@@ -31,6 +31,6 @@
 
 ## Roles 
 
-David Fox-Powell: Team Project Lead
-Maria Mercedes Martinez: Design Lead
-Sal Lardizzone: Research Lead
+- David Fox-Powell: Team Project Lead
+- Maria Mercedes Martinez: Design Lead
+- Sal Lardizzone: Research Lead
