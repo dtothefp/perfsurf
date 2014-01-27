@@ -1,52 +1,34 @@
 #PerfSurf
 
 ### App Description
-PerfSurf will be a Ruby on Rails application that will facilitate the search for the perfect surfing locations around the world. Users will be able to save favorite locations and see the weather conditions for that location to determine if it is a good time to hit the waves. 
+PerfSurf is an application that forecasts surfing/kitesurfing relative wind and wave information world wide. The application has the goal to give the user a visual depiction of surfing conditions worldwide as well as more detailed information for specific locations.
 
+![image](https://dl.dropboxusercontent.com/u/8073874/perfsurf.png )
 
-### User Stories
+### Technologies Implemented 
 
-Administrator - As an administrator I will be able to: 
--  delete users
--  add locations
-
-Users - As a user I will be able to:
-- create an account
-- log in and stay logged in
-- sign out 
-- edit my profile
-- choose/save favorite locations
-- view all of my locations on a map
-- view single location w/specific data (data w/swell & wind data, pictures, hotel info, etc)
-- post comments/reviews about a specific area
-- see other peoples’ comments/pictures
-
-![image](./planning_screenshots/userstories.JPG)
+- Ruby On Rails/Active Record/PostgreSQL
+- JavaScript/jQuery/AJAX/Underscore.js
+- MagicSeaweed Surf API, Instagram API, & Google Maps API
 
 ### Schema
 
 ![image](./planning_screenshots/schema.JPG )
 
-### WireFrames
+- PerfSurf utilizes the Magic Seaweed API to get a variety local forecast information for specific locations.  Unfortunately the API does not provide lattitude and longitude information and this must be retrieved manually and entered into the database by an admin user.
 
-###### HOMEPAGE
-![image](./planning_screenshots/homepage.JPG)
+- The admin section of the application allows an admin to upload a location with it's name, a photo, coordinates, and the Magic Seaweed ID that is associated with the specific location.  
 
-###### LOCATION PAGE
-![image](./planning_screenshots/locationpage.JPG)
+- The Magic Seaweed API can then queried to get the location specific forecasting details.
 
-###### USER PAGE
-![image](./planning_screenshots/userpage.JPG)
+- Latitude and longitude coordinates are also used to query the Instagram API and display the latest publicly available Instagram pictures for the location.
 
+- Users can then view these locations on a Google Map, and animate the locations to get an overview of world wide conditions for the following 5 days.  Users can also view locations specific information in custom charts on the single locations pages.
 
-### Libraries/APIs 
-
-- JQuery
-- Underscore.js
-- MagicSeaweed API 
-- NOAA Weather 
+- Lastly, a user can favorite a location for ease of navigation to the location upon subsequent login. 
 
 ## Roles 
 
-David: Team Project Lead
-Maria: Design Lead
+David Fox-Powell: Team Project Lead
+Maria Mercedes Martinez: Design Lead
+Sal Lardizzone: Research Lead
