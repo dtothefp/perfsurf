@@ -1,15 +1,17 @@
 #PerfSurf
 
 ### App Description
-PerfSurf is an application that forecasts surfing/kitesurfing relative wind and wave information world wide. The application has the goal to give the user a visual depiction of surfing conditions worldwide as well as more detailed information for specific locations.
+- PerfSurf is an application that forecasts surfing/kitesurfing relative wind and wave information world wide. The application has the goal to give the user a visual depiction of surfing conditions worldwide as well as more detailed information for specific locations.
 
-![image](https://dl.dropboxusercontent.com/u/8073874/perfsurf.png )
+-[http://perfsurf.herokuapp.com](http://perfsurf.herokuapp.com/)
 
 ### Technologies Implemented 
 
 - Ruby On Rails/Active Record/PostgreSQL
 - JavaScript/jQuery/AJAX/Underscore.js
 - MagicSeaweed Surf API, Instagram API, & Google Maps API
+
+![image](https://dl.dropboxusercontent.com/u/8073874/perfsurf.png )
 
 ### Schema
 
